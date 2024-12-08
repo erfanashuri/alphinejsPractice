@@ -1,5 +1,105 @@
 @import './base.css';
 
+/* ------------Header------------ */
+.header{
+    height: 58px;
+}
+.header > .navbar{
+    background-color: var(--third-color) !important;
+    height: 58px;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-container > svg {
+    width: 70px;
+}
+.logo-container > span {
+    color: var(--second-color) !important;
+    font-family: airS;
+    padding: 0;
+}
+body > header > nav > div > button{
+    border-color: var(--first-color) !important;
+    padding: 1px 3px !important;
+    border-width: 1.2px !important;
+}
+body > header > nav > div > button > i{
+    color: var(--first-color) !important;
+    width: 100%;
+}
+#offcanvasDarkNavbar > div.offcanvas-body{
+    background-color: var(--second-color);
+}
+.offcanvas-header{
+    padding: 0;
+    min-height: 5rem;
+    position: relative;
+}
+#offcanvasDarkNavbar > div.offcanvas-header > img{
+    width: 100%;
+    opacity: 0.5;
+}
+#offcanvasDarkNavbar > div.offcanvas-header > button{
+    position: absolute;
+    margin: 0;
+    top: 16px;
+    right: 16px;    
+}
+#offcanvasDarkNavbar > div.offcanvas-header > div.profile-container{
+    position: absolute;
+    display: flex;
+    bottom: 16px;
+    left: 16px;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.3rem;
+    opacity: 0.9;
+}
+#offcanvasDarkNavbar > div.offcanvas-header > div.profile-container > img{
+    width: 4.5rem;
+    border-radius: 100%;
+}
+#offcanvasDarkNavbar > div.offcanvas-header > div.profile-container > span{
+    font-family: airS;
+    color: var(--third-color);
+}
+#offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item > a{
+    color: var(--third-color) !important;
+}
+#offcanvasDarkNavbar > div.offcanvas-body > form > button{
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    color: var(--second-color);
+}
+.btn{
+    color: var(--second-color)!important;
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+}
+.btn:hover{
+    background-color: #0097A7;
+    border-color: #0097A7;
+}
+/* ------------Main------------ */
+.main{
+    padding: 0.5rem;
+}
+/*index.html*/
+.main-container{
+    margin-top: 8rem;
+}
+.main-container > svg{
+    width: 20rem;
+}
+.main-button > a{
+    min-width: 14.5rem;
+    height: 3rem;
+}
+/*user.html*/
+
 /* ------------Responsive------------ */
 
 /* Extra small devices (phones, 600px and down) */
@@ -14,12 +114,25 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    /* ------------Header------------ */
+    .header{
+        height: 70px;
+    }
+    .header > .navbar{
+        height: 70px;
+    }
+    #offcanvasDarkNavbar > div.offcanvas-body{
+        background-color: var(--third-color);
+    }
     #offcanvasDarkNavbar > div.offcanvas-body > ul{
         align-items: center;
     }
     #offcanvasDarkNavbar > div.offcanvas-body > form{
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
+    }
+    #offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item > a{
+        color: var(--second-color) !important;
     }
 }
 

@@ -1,13 +1,89 @@
+@font-face {
+    font-family: "Vazir";
+    src: url("./fonts/Vazir.eot"); 
+    src: url("./fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+        url("./fonts/Vazir.woff2") format("woff2"),
+        url("./fonts/Vazir.woff") format("woff"),
+        url("./fonts/Vazir.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "airS";
+  src: url("./fonts/airstrike.ttf") format("truetype"); 
+}
 :root {
-    --first-color:#183839;
-    --second-color:#D3DDD4;
-    --third-color:#757575;
-
+    /*-------------pure color vars------------*/
+    /*------project main colors------*/
+    --first-color:#77c1d2;
+    --second-color:#2d3441;
+    --third-color:#e6e6e6;
+    /*------blacks & whites------*/
     --white: #FAFAFA;
     --white-soft: #f8f8f8;
-    --white-mute: #f2f2f2;
-
     --black: #181818;
-    --black-soft: #222222;
-    --black-mute: #282828;
+    --black-soft: #3c3c3ce6;
+    /*------borders color------*/
+    --divider-light-1: rgba(60, 60, 60, 0.29);
+    --divider-light-2: rgba(60, 60, 60, 0.12);
+    --divider-dark-1: rgba(84, 84, 84, 0.65);
+    --divider-dark-2: rgba(84, 84, 84, 0.48);
+    /*------texts color------*/
+    --text-light-1: var(--black-soft);
+    --text-light-2: var(--black);
+    --text-dark-1: var(--white);
+    --text-dark-2: var(--white-soft);
+
+    /*-------------theme color vars------------*/
+    /*------light theme colors------*/
+    /* --color-background: var(--white);
+    --color-background-soft: var(--white-soft);
+
+    --color-border: var(--divider-light-2);
+    --color-hover: var(--divider-light-1);
+
+    --color-heading: var(--text-light-2);
+    --color-text: var(--text-light-1); */
+    /*------dark theme colors------*/
+    --color-background: var(--black);
+    --color-background-soft: var(--black-soft);
+
+    --color-border: var(--divider-dark-2);
+    --color-hover: var(--divider-dark-1);
+
+    --color-heading: var(--text-dark-1);
+    --color-text: var(--text-dark-2);
+}
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  
+    color: var(--color-text) !important;
+    background: var(--color-background-soft);
+    border-color: var(--color-border) !important;
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+  
+    font-family: Vazir;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+a:hover{
+    color: var(--color-hover);
+}
+:is(h1,h2,h3,h4,h5,h6){
+    color: var(--color-heading)!important;
+}
+
+/*------normal css------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+a{
+    text-decoration: none;
+    color: var(--color-text);
 }
