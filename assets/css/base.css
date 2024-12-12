@@ -31,11 +31,11 @@
     --text-light-2: var(--black);
     --text-dark-1: var(--white);
     --text-dark-2: var(--white-soft);
-
     /*-------------theme color vars------------*/
     /*------light theme colors------*/
     /* --color-background: var(--white);
     --color-background-soft: var(--white-soft);
+    --background-hover:var(--black-soft);
 
     --color-border: var(--divider-light-2);
     --color-hover: var(--divider-light-1);
@@ -45,12 +45,20 @@
     /*------dark theme colors------*/
     --color-background: var(--black);
     --color-background-soft: var(--black-soft);
+    --background-hover:var(--white-soft);
 
     --color-border: var(--divider-dark-2);
     --color-hover: var(--divider-dark-1);
 
     --color-heading: var(--text-dark-1);
     --color-text: var(--text-dark-2);
+    /*------Bootstrap colors------*/
+    --bs-link-color:var(--first-color);
+    --bs-body-bg:var(--color-background-soft);
+    --bs-border-color:var(--second-color);
+    --bs-link-hover-color:var(--color-hover);
+    --bs-link-hover-bg:var(--background-hover);
+
 }
 body {
     min-height: 100vh;
@@ -86,4 +94,14 @@ a:hover{
 a{
     text-decoration: none;
     color: var(--color-text);
+}
+.table-dark{
+    vertical-align: middle;
+}
+.pagination{
+    --bs-pagination-focus-bg: var(--color-heading);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.1rem var(--first-color);
+}
+.form-control{
+    background-color: var(--white-soft);
 }

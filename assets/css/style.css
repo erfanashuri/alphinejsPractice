@@ -1,5 +1,13 @@
 @import './base.css';
-
+.ffairs{
+    font-family: airS !important;
+}
+.fcolor{
+    color: var(--first-color)!important;
+}
+.bgfcolor{
+    background-color: var(--first-color)!important;
+}
 /* ------------Header------------ */
 .header{
     height: 58px;
@@ -87,7 +95,7 @@ body > header > nav > div > button > i{
 .main{
     padding: 0.5rem;
 }
-/*index.html*/
+/*index.html------>*/
 .main-container{
     margin-top: 8rem;
 }
@@ -98,13 +106,80 @@ body > header > nav > div > button > i{
     min-width: 14.5rem;
     height: 3rem;
 }
-/*user.html*/
+/*user.html------>*/
+#add-user{
+    max-width: 14rem;
+}
+#add-user > i{
+    font-size: 1.5rem;
+}
+#add-user > span{
+    font-family: airS;
+}
+#usersAccordion{
+    --bs-accordion-color: var(--third-color);
+    --bs-accordion-bg: var(--black-soft);
+    --bs-accordion-border-color: var(--second-color);
+    --bs-accordion-btn-color: var(--first-color);
+    --bs-accordion-btn-bg: var(--black-soft);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.05rem var(--first-color);
+    --bs-accordion-active-bg: var(--first-color);
+}
+th{
+    font-family: airs;
+    font-weight: lighter;
+    color: var(--first-color)!important;
+}
+.table-dark{
+    --bs-table-color: var(--third-color);
+    --bs-table-bg: var(--second-color);
+    --bs-table-hover-bg: #b5cace;
+    --bs-table-hover-color: var(--black)!important;
+}
+.pagint-container{
+    font-family: airS;
+    background-color: var(--color-background-soft);
+    border: 1px solid var(--second-color);
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+.num-input{
+    max-width: 3.5rem;
+    background-color: var(--black-soft);
+    color: var(--first-color);
+    padding-left: 1.1rem;
+}
+.num-input:focus{
+    outline: none;
+}
+.pagint-container > div:nth-child(1) > span{
+    color: var(--first-color);
+}
+.modal-body input , .modal-body span , .modal-body textarea {
+    background-color: var(--black-soft) !important;
+    border-color: var(--first-color) ;
+}
+.modal-body * , .modal-body * :focus{
+    color: var(--third-color);
+}
+.modal-body * ::placeholder{
+    color: var(--third-color);
+}
 
 /* ------------Responsive------------ */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
+    /* ------------Main------------ */
+    /*user.html------>*/
+    .pagint-container{
+        justify-content: space-around !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    .pagint-container > div{
+        gap: 0.1rem !important;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -114,6 +189,11 @@ body > header > nav > div > button > i{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
     /* ------------Header------------ */
     .header{
         height: 70px;
@@ -126,19 +206,36 @@ body > header > nav > div > button > i{
     }
     #offcanvasDarkNavbar > div.offcanvas-body > ul{
         align-items: center;
+        justify-content: space-around !important;
+        /* gap: 1rem; */
+    }
+    #offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item{
+        padding: 0.25rem;
+        margin: 0.25rem;
+        border: 1px solid var(--second-color);
+        border-radius: 0.3rem;
+    }
+    #offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item:hover{
+        background-color: var(--first-color);
     }
     #offcanvasDarkNavbar > div.offcanvas-body > form{
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
     }
-    #offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item > a{
+    #offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item > a 
+    ,#offcanvasDarkNavbar > div.offcanvas-body > ul >li.nav-item > i {
         color: var(--second-color) !important;
+        font-size: 1rem;
+        padding: 0;
+        margin: 0 !important;
     }
 }
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-
+/* Extra media query for header perfix. */
+@media only screen and (min-width: 1030px) {
+    #offcanvasDarkNavbar > div.offcanvas-body > ul{
+        justify-content: center !important;
+        gap: 1rem;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
