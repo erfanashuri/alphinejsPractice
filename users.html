@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="shortcut icon" href="./assets/images/logos-alpinejs-icon.ico" type="image/x-icon">
     <script defer src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script defer src="./assets/js/usersController.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="./assets/js/main.js"></script>
-    <title>AlphineJs Practice</title>
+    <title>AlpineJs Practice</title>
 </head>
-<body>
+<body x-data="usersData()">
     <header class="header">c
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
               <a href="./index.html" class="logo-container">
                 <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 234.84"><path fill="#77C1D2" d="M398.22 0L512 113.28 398.22 226.56 284.44 113.28z"/><path fill="#2D3441" d="M113.78 0l235.87 234.84H122.1L0 113.28z"/></svg>
-                <span class="navbar-brand">AlphineJs Practice</span>
+                <span class="navbar-brand">AlpineJs Practice</span>
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
@@ -67,7 +69,7 @@
           </nav>
     </header>
     <main class="main">
-      <div class="users-container d-flex flex-column gap-5 mt-3">
+      <div class="users-container d-flex flex-column gap-5 mt-3 min-vh-100">
         <section class="row d-flex flex-column flex-md-row align-items-center justify-content-center mt-3 gap-4">
           <div class="col-5 col-md-3 d-flex justify-content-center">
             <button type="button" class="btn w-100 d-flex align-items-center justify-content-center gap-2" id="add-user" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -84,7 +86,8 @@
             </form>
           </div>
         </section>
-        <section class="row">
+
+        <section class="row" x-init="getUsers()" >
           <div class="accordion col-11 mx-auto row d-md-none" id="usersAccordion">
             <div class="accordion-item col-12 px-0">
               <h2 class="accordion-header">
@@ -122,7 +125,7 @@
             </div>
 
           </div>
-          <div class="d-none d-md-flex">
+          <div class="d-none d-md-flex flex-column">
             <table class="table table-dark table-striped table-hover container-lg">
               <thead>
                 <tr>
@@ -134,64 +137,31 @@
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th>1</th>
-                  <td>User's name & last name</td>
-                  <td>userusername</td>
-                  <td>username@user.com</td>
-                  <td>lorem - Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime minima, quaerat velitx repudiandae ut non iure.</td>
-                  <td class="h-100">
-                    <div class="fw-light d-flex gap-2 w-100 h-100 justify-content-center align-items-center">
-                      <i class="bi bi-trash3"></i>
-                      <i class="bi bi-pencil"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>2</th>
-                  <td>User's name & last name</td>
-                  <td>userusername</td>
-                  <td>username@user.com</td>
-                  <td>lorem - Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime minima, quaerat velitx repudiandae ut non iure.</td>
-                  <td class="h-100">
-                    <div class="fw-light d-flex gap-2 w-100 h-100 justify-content-center align-items-center">
-                      <i class="bi bi-trash3"></i>
-                      <i class="bi bi-pencil"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>User's name & last name</td>
-                  <td>userusername</td>
-                  <td>username@user.com</td>
-                  <td>lorem - Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime minima, quaerat velitx repudiandae ut non iure.</td>
-                  <td class="h-100">
-                    <div class="fw-light d-flex gap-2 w-100 h-100 justify-content-center align-items-center">
-                      <i class="bi bi-trash3"></i>
-                      <i class="bi bi-pencil"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>4</th>
-                  <td>User's name & last name</td>
-                  <td>userusername</td>
-                  <td>username@user.com</td>
-                  <td>lorem - Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime minima, quaerat velitx repudiandae ut non iure.</td>
-                  <td class="h-100">
-                    <div class="fw-light d-flex gap-2 w-100 h-100 justify-content-center align-items-center">
-                      <i class="bi bi-trash3"></i>
-                      <i class="bi bi-pencil"></i>
-                    </div>
-                  </td>
-                </tr>                                                
+              <tbody id="table-body">
+                <template x-for="user in users">
+                  <tr>
+                    <th x-text="user.id"></th>
+                    <td x-text="user.name">User's name & last name</td>
+                    <td x-text="user.username">userusername</td>
+                    <td x-text="user.email">username@user.com</td>
+                    <td x-text="`${user.address.city} - ${user.address.street} - ${user.address.suite}`">lorem - Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime minima, quaerat velitx repudiandae ut non iure.</td>
+                    <td class="h-100">
+                      <div class="fw-light d-flex gap-2 w-100 h-100 justify-content-center align-items-center">
+                        <i class="bi bi-trash3"></i>
+                        <i class="bi bi-pencil"></i>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
               </tbody>
             </table>
+            <div class="spinner-grow align-self-center fcolor" style="width: 3rem; height: 3rem;" role="status" x-show="showUsersLoading">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
         </section>
-        <section class="pagint-container fixed-bottom container start-0 end-0 mx-auto px-4 d-flex align-items-center justify-content-between shadow-lg rounded-top">
+
+        <section class="pagint-container sticky-bottom container start-0 end-0 mx-auto px-4 d-flex align-items-center justify-content-between shadow-lg rounded-top">
           <div class="d-flex gap-2 align-items-center">
             <span class="d-none d-md-block">Showing</span>
             <input type="number" class="rounded num-input">
@@ -211,49 +181,44 @@
             </nav>
           </div>
         </section>
-        <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button> -->
-
-<!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header border-bottom-0 d-flex justify-content-between align-items-center">
-            <h1 class="modal-title fs-5 ffairs fcolor" id="staticBackdropLabel">
-              <i class="bi bi-person-add mb-0 mx-1 h2 fcolor"></i>
-              Add New User
-            </h1>
-            <button type="button" class="border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x fcolor m-0 h1 p-0 h-auto d-flex"></i></button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <span class="input-group-text">First and last name</span>
-              <input type="text" aria-label="First name" class="form-control">
-              <input type="text" aria-label="Last name" class="form-control">
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header border-bottom-0 d-flex justify-content-between align-items-center">
+                <h1 class="modal-title fs-5 ffairs fcolor" id="staticBackdropLabel">
+                  <i class="bi bi-person-add mb-0 mx-1 h2 fcolor"></i>
+                  Add New User
+                </h1>
+                <button type="button" class="border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x fcolor m-0 h1 p-0 h-auto d-flex"></i></button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">First and last name</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                  <input type="text" aria-label="Last name" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Email" aria-label="Username">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" placeholder="example.com" aria-label="Server">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text">Address</span>
+                  <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+              </div>
+              <div class="modal-footer border-top-0">
+                <button type="button" class="btn btn-secondary ffairs bgfcolor" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary ffairs">Submit</button>
+              </div>
             </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">@</span>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Email" aria-label="Username">
-              <span class="input-group-text">@</span>
-              <input type="text" class="form-control" placeholder="example.com" aria-label="Server">
-            </div>
-            <div class="input-group">
-              <span class="input-group-text">Address</span>
-              <textarea class="form-control" aria-label="With textarea"></textarea>
-            </div>
-          </div>
-          <div class="modal-footer border-top-0">
-            <button type="button" class="btn btn-secondary ffairs bgfcolor" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary ffairs">Submit</button>
           </div>
         </div>
-      </div>
-    </div>
       </div>
     </main>
 </body>

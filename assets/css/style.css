@@ -2,12 +2,7 @@
 .ffairs{
     font-family: airS !important;
 }
-.fcolor{
-    color: var(--first-color)!important;
-}
-.bgfcolor{
-    background-color: var(--first-color)!important;
-}
+
 /* ------------Header------------ */
 .header{
     height: 58px;
@@ -94,6 +89,7 @@ body > header > nav > div > button > i{
 /* ------------Main------------ */
 .main{
     padding: 0.5rem;
+    padding-bottom: 0;
 }
 /*index.html------>*/
 .main-container{

@@ -32,6 +32,7 @@
     --text-dark-1: var(--white);
     --text-dark-2: var(--white-soft);
     /*-------------theme color vars------------*/
+
     /*------light theme colors------*/
     /* --color-background: var(--white);
     --color-background-soft: var(--white-soft);
@@ -42,6 +43,7 @@
 
     --color-heading: var(--text-light-2);
     --color-text: var(--text-light-1); */
+
     /*------dark theme colors------*/
     --color-background: var(--black);
     --color-background-soft: var(--black-soft);
@@ -60,6 +62,26 @@
     --bs-link-hover-bg:var(--background-hover);
 
 }
+/*------Main colors classes------*/
+.fcolor{
+    color: var(--first-color)!important;
+}
+.scolor{
+    color: var(--second-color)!important;
+}
+.tcolor{
+    color: var(--third-color)!important;
+}
+.bgfcolor{
+    background-color: var(--first-color)!important;
+}
+.bgscolor{
+    background-color: var(--second-color)!important;
+}
+.bgtcolor{
+    background-color: var(--third-color)!important;
+}
+/*------Some Css------*/
 body {
     min-height: 100vh;
     overflow-x: hidden;
@@ -83,7 +105,7 @@ a:hover{
     color: var(--color-heading)!important;
 }
 
-/*------normal css------*/
+/*------Normalize Css------*/
 *,
 *::before,
 *::after {
@@ -95,6 +117,12 @@ a{
     text-decoration: none;
     color: var(--color-text);
 }
+/*------For alpine------*/
+
+[x-cloak] { display: none !important; }
+
+/*------Normalize Bootstrap------*/
+
 .table-dark{
     vertical-align: middle;
 }
