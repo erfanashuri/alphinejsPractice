@@ -91,7 +91,7 @@
         <section class="row" x-init="getUsers()" >
           <!-- accordion -->
           <div class="accordion col-11 mx-auto row d-md-none" id="usersAccordion">
-            <template x-for="user in users">
+            <template x-for="user in pageUsers">
               <div class="accordion-item col-12 px-0">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="`#collapse${user.id}`" aria-expanded="false" :aria-controls="`collapse${user.id}`" x-text="user.name">
@@ -153,7 +153,7 @@
                 </tr>
               </thead>
               <tbody id="table-body">
-                <template x-for="user in users">
+                <template x-for="user in pageUsers">
                   <tr>
                     <th x-text="user.id"></th>
                     <td x-text="user.name">User's name & last name</td>
@@ -187,19 +187,23 @@
         <section class="pagint-container fixed-bottom container start-0 mx-auto px-4 d-flex align-items-center justify-content-between shadow-lg rounded-top">
           <div class="d-flex gap-2 align-items-center">
             <span class="d-none d-md-block">Showing</span>
-            <input type="number" class="rounded num-input">
-            <span class="d-none d-md-block" >Result(s)</span>
+            <input type="number" class="rounded num-input" :value="itemsCount" @change="perPageHandler">
             <span>of</span>
-            <span>99</span>
+            <span x-text="users.length"></span>
+            <span class="d-none d-md-block" >Result(s)</span>
           </div>
           <div>
-            <nav aria-label="Page navigation">
-              <ul class="pagination m-0">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <nav aria-label="Page navigation w-100">
+              <ul class="pagination m-0 w-100">
+                <li class="page-item w-50"><button class="page-link d-flex align-items-center gap-2 justify-content-center" style="width: 6.5rem;" @click="pageChanger('prev')">
+                  <i class="bi bi-journal-minus"></i>
+                  <span>Prev</span></button></li>
+                <li class="page-item d-flex align-items-center justify-content-center" aria-current="page">
+                  <div class="border h-100 p-0 d-flex align-items-center justify-content-center fcolor" style="width: 3rem;"><span x-text="currentPage"></span></div>
+                </li>
+                <li class="page-item w-50"><button class="page-link d-flex align-items-center gap-2 justify-content-center" style="width: 6.5rem;" @click="pageChanger('next')">
+                  <i class="bi bi-journal-plus"></i>
+                  <span>Next</span></button></li>
               </ul>
             </nav>
           </div>
