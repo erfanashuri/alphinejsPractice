@@ -164,7 +164,22 @@ th{
 .modal-body * ::placeholder{
     color: var(--third-color);
 }
-
+#search-users > div{
+    width: 12rem;
+    background-color: var(--black-soft)!important;
+    top: 44px;
+    left: 9px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    padding: 3px;
+    z-index: 999;
+    background-color: var(--white);
+    color: var(--first-color);
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+#search-users>input:focus{
+    color: var(--white-soft) !important;
+}
 /* ------------Responsive------------ */
 
 /* Extra small devices (phones, 600px and down) */
@@ -188,7 +203,9 @@ th{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
+    #search-users > div{
+        width: 60%;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

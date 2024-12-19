@@ -79,18 +79,31 @@
             </button>
           </div>
           <div class="col-7">
-            <form class="d-flex w-100" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search">
-              <button class="btn btn-success d-flex align-items-center gap-1" type="submit">
-                <i class="bi bi-search"></i>
+            <form class="d-flex w-100 position-relative" role="search" id="search-users" @submit.prevent="">
+              <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search" x-model="searchObject" @focus="searchShow=true" @blur="searchShow=false" @keyup.enter="searchHandler" :disabled="searchResultsFlag">
+              <div class="position-absolute" x-cloak x-show="searchShow" x-transition>
+                <div class="mb-2">
+                  <span class="ffairs">Searching for :</span>
+                  <span x-text="searchObject"></span>
+                </div>
+              </div>
+              <button class="btn btn-success d-flex align-items-center gap-1" type="submit" @click="searchHandler" :class="searchResultsFlagShow && 'bg-danger border-0'">
+                <i class="bi bi-search" x-show="!searchResultsFlagShow"></i>
+                <i class="bi bi-x-lg" x-cloak x-show="searchResultsFlagShow"></i>
               </button>
             </form>
           </div>
         </section>
         <!-- accordion & table -->
+         
         <section class="row" x-init="getUsers()" >
+          
           <!-- accordion -->
           <div class="accordion col-11 mx-auto row d-md-none" id="usersAccordion">
+            <div class="my-4 h4 fcolor" x-cloak x-show="searchResultsFlagShow">
+              <span>Search Result(s) for :</span>
+              <span x-text="searchResultsFlag"></span>
+            </div>
             <template x-for="user in pageUsers">
               <div class="accordion-item col-12 px-0">
                 <h2 class="accordion-header">
@@ -140,7 +153,11 @@
             </template>
           </div>
           <!-- table -->
-          <div class="d-none d-md-flex flex-column">
+          <div class="d-none d-md-flex flex-column ">
+            <div class="my-4 h4 fcolor container-lg" x-cloak x-show="searchResultsFlagShow">
+              <span>Search Result(s) for :</span>
+              <span x-text="searchResultsFlag"></span>
+            </div>
             <table class="table table-dark table-striped table-hover container-lg">
               <thead>
                 <tr>
